@@ -85,8 +85,13 @@
         &--button {
             color: white;
             border: none;
-            background-color: transparent;
+            text-decoration: none;
             font-family: "Classic Console";
+
+            &-active {
+                color: var(--blue-darken2);
+                text-decoration: underline;
+            }
 
             &:not(:last-child)::after {
                 content: " | ";
