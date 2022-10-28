@@ -46,7 +46,16 @@ export function AuthPage() {
                 account.validateSession(res.data.token);
                 navigate("/");
             }).catch((err) => {
-                throw err;
+                setErrorText(err.message);
+                setShowError(true);
+
+                if (errorTimeout()) {
+                    clearTimeout(errorTimeout());
+                }
+
+                setErrorTimeout(setTimeout(() => {
+                    setShowError(false);
+                }, 5000));
             });
         } else {
             account.register(username).then((body) => {
