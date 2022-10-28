@@ -1,0 +1,10 @@
+@mixin close-button($class) {
+    .#{$class}--close-button {  
+        text-align: center;
+        float: right;
+        width: 13px;
+        
+        background-color: black;
+        color: white;
+    }
+}

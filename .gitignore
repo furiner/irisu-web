@@ -1,0 +1,7 @@
+# *hiss*
+dist/
+node-modules/
+package-lock.json
+.env
+node_modules
+pool.js

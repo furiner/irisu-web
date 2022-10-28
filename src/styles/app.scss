@@ -1,0 +1,43 @@
+@import "./fonts.scss";
+
+// themes
+@import "./themes/default.scss";
+
+// pages
+@import "./pages/disclaimer.scss";
+
+// components
+@import "./components/navbar.scss";
+@import "./components/modal.scss";
+@import "./components/button.scss";
+
+body {
+    background: var(--background) no-repeat center;
+    background-position: 0 0;
+    background-attachment: fixed;
+    background-size: cover;
+
+    font-family: "Classic Console";
+    margin: 0px; // i fucking hate user-agent styling
+
+    // default theming
+    @include default_theme;
+
+    // other themes
+    // no other themes yet
+}
+
+// central page styling
+.page-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1250px;
+}

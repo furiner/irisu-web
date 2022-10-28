@@ -1,0 +1,33 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
+
+@mixin default_theme {
+    // assign colors
+    $colors: (
+        "blue": #80acff,
+        "red": #ff8080,
+        "green": #80ff84,
+        "yellow": #fdff80,
+    );
+
+    $variations: 2.5%, 5%, 7.5%, 10%, 12.5%, 15%, 17.5%, 20%, 22.5%, 25%;
+
+    // default variables
+    --background: url("https://ncx.irisu.us/dist/chrome-gadget.png");
+
+    // dynamically assign variables
+    @each $name, $value in $colors {
+        // assign base variable
+        --#{$name}: #{$value};
+        $currentLightness: color.lightness($value);
+
+        // assign lighten & darken variables
+        @for $i from 1 through length($variations) {
+            $lighten: nth($variations, $i);
+            $darken: nth($variations, $i);
+            --#{$name}-lighten#{$i}: #{lighten($value, $lighten)};
+            --#{$name}-darken#{$i}: #{darken($value, $darken)};
+        }
+    }
+}
