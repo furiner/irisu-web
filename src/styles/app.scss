@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
 @import "./fonts.scss";
 
 // themes
@@ -22,11 +25,28 @@ body {
     font-family: "Classic Console";
     margin: 0px; // i fucking hate user-agent styling
 
+    // handle grayscale
+    --grayscale-1: white;
+    $currentLightness: color.lightness(white);
+
+    $variations: 5%, 10%, 15%, 25%, 30%, 35%, 40%, 45%, 50%;
+
+    // assign lighten & darken variables
+    @for $i from 1 through length($variations) {
+        $darken: nth($variations, $i);
+        --grayscale-#{$i + 1}: #{darken(white, $darken)};
+    }
+
     // default theming
     @include default_theme;
 
     // other themes
     // no other themes yet
+
+    // apply fonts to things that need them
+    pre, button, input, textarea, label {
+        font-family: "Classic Console";
+    }
 }
 
 // central page styling
