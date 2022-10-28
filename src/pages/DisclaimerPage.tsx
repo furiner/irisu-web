@@ -46,8 +46,8 @@ export function DisclaimerPage() {
                 </div>
 
                 <div class="disclaimer--footer">
-                    <a href="#" target="_blank">source code</a>
-                    <a href="#" target="_blank">twitter</a>
+                    <a href="https://github.com/irisu01/irisu-web" target="_blank">source code</a>
+                    <a href="https://twitter.com/atraintohoromai" target="_blank">twitter</a>
                 </div>
             </Modal>
         </>
