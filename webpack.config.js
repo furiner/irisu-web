@@ -1,8 +1,14 @@
 const path = require("path");
 const webpack = require("webpack");
-const Dotenv = require('dotenv-webpack');
+const Dotenv = require("dotenv-webpack");
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: [
+        "webpack-hot-middleware/client?path=https://ncx.irisu.us/dist/__webpack_hmr",
+        "./src/index.tsx"
+    ],
+
+
+    devtool: 'eval-cheap-source-map',
 
     module: {
         rules: [
@@ -10,12 +16,17 @@ module.exports = {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     options: {
                         babelrc: false,
                         configFile: false,
-                        presets: ['@babel/preset-env', 'solid', '@babel/preset-typescript'],
-                        plugins: ['@babel/plugin-syntax-dynamic-import', '@babel/plugin-proposal-class-properties', '@babel/plugin-proposal-object-rest-spread'],
+                        presets: ["@babel/preset-env", "solid", "@babel/preset-typescript"],
+                        plugins: [
+                            "@babel/plugin-syntax-dynamic-import",
+                            "@babel/plugin-proposal-class-properties",
+                            "@babel/plugin-proposal-object-rest-spread",
+                            "solid-refresh/babel"
+                        ]
                     }
                 }
             },
@@ -31,7 +42,7 @@ module.exports = {
     },
 
     mode: "development",
-    
+
     resolve: {
         extensions: [".tsx", ".ts", ".js", ".json"]
     },
@@ -42,16 +53,21 @@ module.exports = {
     },
 
     devServer: {
-        liveReload: true,
+        liveReload: false,
+        hot: true,
     },
 
     plugins: [
         new Dotenv({
-            prefix: 'import.meta.env.'
+            prefix: "import.meta.env."
+        }),
+        new webpack.HotModuleReplacementPlugin({
+
         })
     ],
 
     stats: {
-        loggingDebug: ['sass-loader'],
-    }
+        loggingDebug: ["sass-loader"],
+    },
+
 }

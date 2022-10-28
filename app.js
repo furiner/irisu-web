@@ -42,7 +42,10 @@ app.use(
 );
 
 // add webpack hot middleware
-app.use("/dist", require("webpack-hot-middleware")(compiler));
+app.use("/dist", require("webpack-hot-middleware")(compiler, {
+	log: console.log,
+	path: "/__webpack_hmr",
+}));
 
 
 app.listen(7542)
