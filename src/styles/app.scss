@@ -5,8 +5,10 @@
 
 // pages
 @import "./pages/disclaimer.scss";
+@import "./pages/auth.scss";
 
 // components
+@import "./components/error.scss";
 @import "./components/navbar.scss";
 @import "./components/modal.scss";
 @import "./components/button.scss";
@@ -28,16 +30,24 @@ body {
 }
 
 // central page styling
-.page-container {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 .page {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 1250px;
+
+    &-container {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

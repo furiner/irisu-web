@@ -1,0 +1,88 @@
+.auth {
+    border: 1px solid var(--blue-lighten1);
+    background-color: black;
+    padding: 30px;
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+
+        &--title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px var(--blue-darken1);
+        }
+
+        &--subtitle {
+            color: white;
+            margin-top: 5px;
+            text-shadow: 1px 1px var(--blue-darken3);
+        }
+    }
+
+    &-content {
+        margin-top: 10px;
+
+        &--form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: white;
+            gap: 5px;
+
+            & a {
+                color: var(--blue-lighten2);
+                text-decoration: none;
+            }
+
+            &--input {
+                background-color: black;
+                border: 1px solid var(--blue);
+                padding: 2.5px 5px 2.5px 5px;
+                color: white;
+                font-family: "Classic Console";
+
+                &-label {
+                    color: white;
+                    font-family: "Classic Console";
+                }
+            }
+
+            &--submit {
+                background-color: black;
+                border: 1px solid var(--blue);
+                padding: 2.5px 5px 2.5px 5px;
+                justify-self: right;
+                width: fit-content;
+                float: right;
+                color: white;
+                font-family: "Classic Console";
+
+                &:hover {
+                    border-color: var(--blue-lighten2);
+                }
+            }
+        }
+    }
+
+    &--password-modal {
+        &--buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        & pre {
+            background-color: #1f1f1f;
+            color: white;
+            font-family: "Classic Console";
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            white-space: pre-wrap;
+        }
+    }
+}
