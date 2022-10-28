@@ -19,6 +19,14 @@ router.post("/register", async (req, res) => {
         });
     }
 
+    // check if the username uses non-standard characters
+    if (!/^[a-zA-Z0-9]+$/.test(req.body.username)) {
+        return res.status(400).json({
+            code: 400,
+            message: "your username can only contain english letters and numbers!"
+        });
+    }
+
     const keyGen = new Array(16).fill(0).map(x => randomWords[getRndInteger(0, randomWords.length - 1)]).join(" ");
 
     // check if username is taken
@@ -27,7 +35,7 @@ router.post("/register", async (req, res) => {
     if (users.length > 0) {
         return res.status(400).json({
             code: 400,
-            message: "username is taken!"
+            message: "this username is taken!"
         });
     }
 
@@ -114,6 +122,34 @@ router.post("/login", async (req, res) => {
         }
     });
 });
+
+router.post("/logout", async(req, res) => {
+    // body assert
+    if (!req.body.token) {
+        return res.status(400).json({
+            code: 400,
+            message: "you are missing a token!"
+        });
+    }
+
+    // check if the token is valid
+    try {
+        jwt.verify(req.body.token, jwtSecret);
+    } catch (err) {
+        return res.status(400).json({
+            code: 400,
+            message: "invalid token!"
+        });
+    }
+
+    // delete the session
+    await pool.execute("DELETE FROM sessions WHERE token = ?", [req.body.token]);
+
+    return res.status(200).json({
+        code: 200,
+        message: "you have been logged out!"
+    });
+})
 
 router.post("/validate", async(req, res) => {
     if (!req.body.token) {

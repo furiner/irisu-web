@@ -91,6 +91,24 @@ export class Account {
         })
     }
 
+    public logout() {
+        this.rest.request("https://ncx.irisu.us/api/auth/logout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    token: localStorage.getItem("session")
+                })
+            }).then((res) => {
+                localStorage.removeItem("session");
+                this.setSignal("login", false);
+                this.setSignal("account", undefined);
+            }).catch((x) => {
+                // oops
+            });
+    }
+
     public register(username: string) {
         return this.rest.request("https://ncx.irisu.us/api/auth/register", {
             method: "POST",

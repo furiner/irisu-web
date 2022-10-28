@@ -9,7 +9,8 @@ export function NavbarAccount() {
         <div class="navbar-header--right-account">
             {account.getSignal<boolean>("login") ? <div class="navbar-header--right-account-details">
                 <div class="navbar-header--right-account-details--username">
-                    hello, <span>{account.getSignal<AccountDetails>("account")?.username}</span>! <button class="navbar-header--right-account-details--logout">(logout)</button>
+                    hello, <span>{account.getSignal<AccountDetails>("account")?.username}</span>!
+                    <button class="navbar-header--right-account-details--logout" onClick={() => account.logout()}>(logout)</button>
                 </div>
 
                 <div class="navbar-header--right-account-buttons">
