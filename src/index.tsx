@@ -21,10 +21,12 @@ render(() => {
                     <div id="irisu" class="page-container">
                         <div class="page">
                             {acceptedDisclaimer ? <Navbar /> : null}
-                            <Routes>
-                                <Route path="/" component={acceptedDisclaimer ? HomePage : DisclaimerPage} />
-                                <Route path="/auth" component={AuthPage} />
-                            </Routes>
+                            <div class="page-content">
+                                <Routes>
+                                    <Route path="/auth" component={AuthPage} />
+                                    <Route path="/" component={acceptedDisclaimer ? HomePage : DisclaimerPage} />
+                                </Routes>
+                            </div>
                         </div>
                     </div>
                 </ThemeProvider>

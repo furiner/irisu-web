@@ -1,0 +1,13 @@
+.error {
+    background-color: black;
+    border: 1px solid var(--red-lighten1);
+    padding: 5px;
+
+    &-text {
+        background: linear-gradient(0deg, var(--red-lighten1), var(--red-lighten5));
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-text-fill-color: transparent;
+    }
+}
