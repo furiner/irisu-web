@@ -20,14 +20,33 @@ export function CoreKeybindHandler({
     document.body.addEventListener("click", function (e) {
         const anchor = e.target as HTMLAnchorElement;
 
-        if (anchor) {
+        if (anchor && anchor.pathname) {
             if (anchor.target == "_blank") {
                 return;
             }
 
+
+            // parse query params and turn them into an object
+            const params = new URLSearchParams(anchor.search);
+
             // navigate route
             e.preventDefault();
-            navigate(anchor.href);
+
+            // validate whether the current page is the same as the one we're trying to navigate to
+            if (!anchor.pathname)
+                return;
+
+            if (window.location.pathname == anchor.pathname) {
+                navigate(anchor.pathname, {
+                    resolve: true,
+                    replace: true,
+                    state: Object.fromEntries(params.entries())
+                });
+            } else {
+                navigate(anchor.pathname, {
+                    state: Object.fromEntries(params.entries())
+                });
+            }
         }
     })
 
