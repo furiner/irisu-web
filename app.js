@@ -14,13 +14,14 @@ const compiler = webpack(webpackConfig);
 // create express app
 const app = express();
 
-
 // statically add dist
 app.use((req, res, next) => {
 	// arbitrary headers
 	res.set('Cache-Control', 'no-store');
 	res.set("Access-Control-Allow-Origin", "https://irisu.neocities.org");
 	res.set("Access-Control-Allow-Credentials", "true");
+	res.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+	res.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 	res.set("Vary", "Cookie, Origin");
 
 	next();
