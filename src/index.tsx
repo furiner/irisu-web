@@ -23,7 +23,8 @@ render(() => {
                             {acceptedDisclaimer ? <Navbar /> : null}
                             <div class="page-content">
                                 <Routes>
-                                    <Route path="/auth" component={AuthPage} />
+                                    <Route path="/login" component={AuthPage} />
+                                    <Route path="/register" component={AuthPage} />
                                     <Route path="/" component={acceptedDisclaimer ? HomePage : DisclaimerPage} />
                                 </Routes>
                             </div>
