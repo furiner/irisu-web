@@ -36,7 +36,6 @@
             &-search {
                 display: flex;
                 color: white;
-                justify-content: center;
                 align-items: center;
                 gap: 10px;
 
@@ -50,6 +49,31 @@
             }
 
             &-account {
+                &-details {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    margin-top: 5px;
+
+                    &--username {
+                        color: white;
+
+                        & span {
+                            color: var(--blue-darken1);
+                        }
+                    }
+
+                    &--logout {
+                        border: 0;
+                        background: none;
+                        color: var(--grayscale-7);
+                        font-size: 0.8em;
+
+                        &:hover {
+                            color: var(--grayscale-5);
+                        }
+                    }
+                }
                 &-buttons {
                     display: flex;
                     flex-direction: row;
