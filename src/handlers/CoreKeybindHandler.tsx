@@ -21,9 +21,12 @@ export function CoreKeybindHandler({
         const anchor = e.target as HTMLAnchorElement;
 
         if (anchor) {
-            e.preventDefault();
+            if (anchor.target == "_blank") {
+                return;
+            }
 
             // navigate route
+            e.preventDefault();
             navigate(anchor.href);
         }
     })
