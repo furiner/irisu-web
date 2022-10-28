@@ -25,7 +25,7 @@ body {
     font-family: "Classic Console";
     margin: 0px; // i fucking hate user-agent styling
 
-    // handle grayscale
+    // handle grayscale colors
     --grayscale-1: white;
     $currentLightness: color.lightness(white);
 
