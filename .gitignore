@@ -1,5 +1,6 @@
 # *hiss*
 dist/
+config/config.js
 node-modules/
 package-lock.json
 .env
