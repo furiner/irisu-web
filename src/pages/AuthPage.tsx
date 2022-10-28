@@ -39,9 +39,12 @@ export function AuthPage() {
             const password = formData.get("password") as string;
             
             account.login(username, password).then((res) => {
-    
                 // set session token
                 localStorage.setItem("session", res.data.token);
+
+                // redirect to home
+                account.validateSession(res.data.token);
+                navigate("/");
             }).catch((err) => {
                 throw err;
             });
