@@ -13,7 +13,8 @@ const pageMap = {
 
 const subtextValues = [
     "into the void",
-    "does anyone actually read these"
+    "does anyone actually read these",
+    "a place for me to store my thoughts"
 ];
 
 function getRndInteger(min: number, max: number): number {
@@ -51,7 +52,7 @@ export function Navbar({
                 {Object.keys(pageMap).map((page) => (
                     <a
                         href={pageMap[page as CurrentPage]}
-                        class={`navbar-buttons--button ${currentPage == page ? "active" : ""}`}
+                        class={`navbar-buttons--button ${currentPage == page ? "navbar-buttons--button-active" : ""}`}
                     >{page}</a>
                 ))}
             </div>
